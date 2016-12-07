@@ -153,20 +153,16 @@ class SuperMart {
     		}
                 
     // Step 2: free busy cashiers that are done at currenttime, add to free cashierQ
-                if(checkoutarea.sizeBusyCashierQ() != 0){
-                    if(checkoutarea.peekBusyCashierQ().getEndBusyTime() == currentTime){
-                    checkoutarea.insertFreeCashierQ(checkoutarea.removeBusyCashierQ());
-                    System.out.println("\tCashier #" + checkoutarea.peekBusyCashierQ().getCashierID() + " is free");
-                    }
-//                     if(currentTime == (customer.getWaitTime() + customer.getServiceTime())){
-//                    customer.setFinishTime(currentTime);
-//                    System.out.print(customer.getFinishTime());
-//                    checkoutarea.removeCustomerQ();
-//                    System.out.println("\nCustomer #" + customer.getCustomerID() + " leaves");  
-//                }
-                }else{
-                    
-                }
+                if (checkoutarea.sizeBusyCashierQ() != 0 && (checkoutarea.peekBusyCashierQ().getEndBusyTime() == currentTime)){
+    			while(!checkoutarea.emptyBusyCashierQ() && (checkoutarea.peekBusyCashierQ().getEndBusyTime() == currentTime)){
+    				Cashier busycashier = checkoutarea.removeBusyCashierQ();
+    				System.out.println("\tCustomer #" + busycashier.endServeCustomer().getCustomerID() + " is done");
+    		        System.out.println("\tCashier  #"+ busycashier.getCashierID()  + " is free");
+    		        checkoutarea.insertFreeCashierQ(busycashier);
+    		       
+    		    }
+    		}
+                
                 
           // Step 3: get free cashiers to serve waiting customers at currenttime
            
