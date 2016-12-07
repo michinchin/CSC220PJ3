@@ -156,7 +156,7 @@ class SuperMart {
                 if(checkoutarea.sizeBusyCashierQ() != 0){
                     if(checkoutarea.peekBusyCashierQ().getEndBusyTime() == currentTime){
                     checkoutarea.insertFreeCashierQ(checkoutarea.removeBusyCashierQ());
-                    System.out.println("\tCashier #" + checkoutarea.peekBusyCashierQ().getCashierID() + "is free");
+                    System.out.println("\tCashier #" + checkoutarea.peekBusyCashierQ().getCashierID() + " is free");
                     }
 //                     if(currentTime == (customer.getWaitTime() + customer.getServiceTime())){
 //                    customer.setFinishTime(currentTime);
