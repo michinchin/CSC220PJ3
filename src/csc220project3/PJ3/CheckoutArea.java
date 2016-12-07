@@ -202,7 +202,7 @@ class CheckoutArea {
   {
   	System.out.println("\t# waiting customers  : "+sizeCustomerQ());
   	System.out.println("\t# busy cashiers      : "+sizeBusyCashierQ());
-  	System.out.println("\t# free cashiers      : "+sizeFreeCashierQ());
+  	System.out.println("\t# free cashiers      : "+sizeFreeCashierQ()+"\n");
   }
 
 

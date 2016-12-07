@@ -93,21 +93,21 @@ class Cashier {
    // update statistical data 
    void updateTotalFreeTime()
    {
-       totalFreeTime += endFreeTime-startFreeTime;
+       totalFreeTime += (endFreeTime-startFreeTime);
        
     // add statements
    }
 
    void updateTotalBusyTime()
    {
-       totalBusyTime += endBusyTime - startBusyTime;
+       totalBusyTime += serveCustomer.getServiceTime();
        
 	// add statements
    }
 
    void updateTotalCustomers()
    {
-       totalCustomers += serveCustomer.getCustomerID();
+       totalCustomers ++;
 	// add statements
    }
 
@@ -120,8 +120,8 @@ class Cashier {
        setStartBusyTime(currentTime);
        setEndBusyTime(aCustomer.getServiceTime()+currentTime);
        setCurrentCustomer(aCustomer);
-       aCustomer.setWaitTime(currentTime);
-       aCustomer.setFinishTime(aCustomer.getFinishTime());
+       aCustomer.setWaitTime(currentTime-aCustomer.getArrivalTime());
+       aCustomer.setFinishTime(currentTime + aCustomer.getServiceTime());
        updateTotalCustomers();
         // goal  : start serving aCustomer at currentTime
         //
@@ -138,7 +138,7 @@ class Cashier {
    Customer endServeCustomer()
    {
        updateTotalBusyTime();
-       setStartFreeTime(totalBusyTime+startBusyTime);
+       setStartFreeTime(endBusyTime);
        
   	// goal  : end serving aCustomer at endBusyTime
         //
