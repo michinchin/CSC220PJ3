@@ -222,6 +222,8 @@ class SuperMart {
       }else{
           while(!checkoutarea.emptyBusyCashierQ()){
               busyCashier = checkoutarea.removeBusyCashierQ();
+              busyCashier.setEndBusyTime(simulationTime);
+              busyCashier.updateTotalBusyTime();
               busyCashier.printStatistics();
                       
               System.out.println("\n");
@@ -235,7 +237,8 @@ class SuperMart {
       }else{
           while(!checkoutarea.emptyFreeCashierQ()){
               cashierServing =checkoutarea.removeFreeCashierQ();
-//              cashierServing.setEndFreeTime(simulationTime);
+              cashierServing.setEndFreeTime(simulationTime);
+              cashierServing.updateTotalFreeTime();
               cashierServing.printStatistics(); 
               System.out.println("\n");
 

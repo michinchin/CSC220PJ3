@@ -93,14 +93,14 @@ class Cashier {
    // update statistical data 
    void updateTotalFreeTime()
    {
-       totalFreeTime += (endFreeTime-startFreeTime);
+       totalFreeTime += endFreeTime-startFreeTime;
        
     // add statements
    }
 
    void updateTotalBusyTime()
    {
-       totalBusyTime += serveCustomer.getServiceTime();
+       totalBusyTime += endBusyTime-startBusyTime;
        
 	// add statements
    }
